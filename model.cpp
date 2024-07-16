@@ -10,10 +10,8 @@ Model::Model()
     gun.show();
 
    // GameObject gun2(gun);
+   // GameObject gun2 = gun;
 
-    GameObject gun2 = gun;
-
-    gun2.show();
 
 //    gameObjects.push_back(tank); //!!!! Нема конструктора глибокої копії
 //    gameObjects.push_back(gun);  //!!! Зробити наступного разу

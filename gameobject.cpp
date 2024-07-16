@@ -9,7 +9,13 @@ using namespace std;
 
 GameObject::GameObject()
 {
-    //ctor
+    x = 0;
+    y = 0;
+    h = 0;
+    w = 0;
+    speedX = 0;
+    speedY = 0;
+    matr = NULL;
     cout << "--c1--" << endl;
 }
 
