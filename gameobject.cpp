@@ -10,6 +10,7 @@ using namespace std;
 GameObject::GameObject()
 {
     //ctor
+    cout << "--c1--" << endl;
 }
 
 GameObject::GameObject(double y, double x, double speed, double angleDeg, const char* fileName){
@@ -46,6 +47,30 @@ GameObject::GameObject(double y, double x, double speed, double angleDeg, const 
     this->y = y;
     speedX = speed * cos(degToRad(angleDeg));
     speedY = speed * sin(degToRad(angleDeg));
+    cout << "--c2--" << endl;
+}
+
+GameObject::GameObject(const GameObject& other){
+    x = other.x;
+    y = other.y;
+    h = other.h;
+    w = other.w;
+    speedX = other.speedX;
+    speedY = other.speedY;
+
+    matr = new char*[h];
+    for (int i=0; i<h; i++){
+        matr[i] = new char[w];
+    }
+
+    for (int i=0; i<h; i++)
+    {
+        for (int j=0; j<w; j++)
+        {
+            matr[i][j] = other.matr[i][j];
+        }
+    }
+    cout << "--cc--" << endl;
 }
 
 void GameObject::show() const{
@@ -64,4 +89,5 @@ GameObject::~GameObject(){
         delete[] matr[i];
     }
     delete [] matr;
+    cout << "--d--" << endl;
 }
