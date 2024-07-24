@@ -36,13 +36,16 @@
 		</Compiler>
 		<Unit filename="common.cpp" />
 		<Unit filename="common.h" />
+		<Unit filename="fon1.img" />
 		<Unit filename="gameobject.cpp" />
 		<Unit filename="gameobject.h" />
+		<Unit filename="gun.img" />
 		<Unit filename="main.cpp" />
 		<Unit filename="model.cpp">
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="model.h" />
+		<Unit filename="tank.img" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>

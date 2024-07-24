@@ -19,9 +19,11 @@ GameObject::GameObject()
     cout << "--c1--" << endl;
 }
 
-GameObject::GameObject(double y, double x, double speed, double angleDeg, const char* fileName){
+GameObject::GameObject(double y, double x, double speed, double angleDeg, const char* fileName)
+{
     ifstream in(fileName);
-    if (!in) {
+    if (!in)
+    {
         throw "cannot open file";
     }
     in >> h >> w;
@@ -30,7 +32,8 @@ GameObject::GameObject(double y, double x, double speed, double angleDeg, const 
     //cout << s << endl;
 
     matr = new char*[h];
-    for (int i=0; i<h; i++){
+    for (int i=0; i<h; i++)
+    {
         matr[i] = new char[w];
     }
 
@@ -38,13 +41,15 @@ GameObject::GameObject(double y, double x, double speed, double angleDeg, const 
     {
         for (int j=0; j<w; j++)
         {
-            matr[i][j] = 32;
+            matr[i][j] = 32;//space
         }
     }
 
-    for (int i=0; i<h; i++){
+    for (int i=0; i<h; i++)
+    {
         getline(in, s);
-        for (int j=0; j<s.length(); j++){
+        for (int j=0; j<s.length(); j++)
+        {
             matr[i][j] = s[j];
         }
     }
@@ -56,7 +61,8 @@ GameObject::GameObject(double y, double x, double speed, double angleDeg, const 
     cout << "--c2--" << endl;
 }
 
-GameObject::GameObject(const GameObject& other){
+GameObject::GameObject(const GameObject& other)
+{
     x = other.x;
     y = other.y;
     h = other.h;
@@ -65,7 +71,8 @@ GameObject::GameObject(const GameObject& other){
     speedY = other.speedY;
 
     matr = new char*[h];
-    for (int i=0; i<h; i++){
+    for (int i=0; i<h; i++)
+    {
         matr[i] = new char[w];
     }
 
@@ -79,7 +86,43 @@ GameObject::GameObject(const GameObject& other){
     cout << "--cc--" << endl;
 }
 
-void GameObject::show() const{
+GameObject& GameObject::operator=(const GameObject& other){
+    if (this == &other) return *this;
+    if (matr != NULL)
+    {
+        for (int i=0; i<h; i++)
+        {
+            delete[] matr[i];
+        }
+        delete [] matr;
+    }
+
+    x = other.x;
+    y = other.y;
+    h = other.h;
+    w = other.w;
+    speedX = other.speedX;
+    speedY = other.speedY;
+
+    matr = new char*[h];
+    for (int i=0; i<h; i++)
+    {
+        matr[i] = new char[w];
+    }
+
+    for (int i=0; i<h; i++)
+    {
+        for (int j=0; j<w; j++)
+        {
+            matr[i][j] = other.matr[i][j];
+        }
+    }
+    cout << "fun = " << endl;
+    return *this;
+}
+
+void GameObject::show() const
+{
     for (int i=0; i<h; i++)
     {
         for (int j=0; j<w; j++)
@@ -90,10 +133,15 @@ void GameObject::show() const{
     }
 }
 
-GameObject::~GameObject(){
-    for (int i=0; i<h; i++){
-        delete[] matr[i];
+GameObject::~GameObject()
+{
+    if (matr != NULL)
+    {
+        for (int i=0; i<h; i++)
+        {
+            delete[] matr[i];
+        }
+        delete [] matr;
+        cout << "--d--" << endl;
     }
-    delete [] matr;
-    cout << "--d--" << endl;
 }

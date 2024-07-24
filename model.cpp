@@ -9,9 +9,11 @@ Model::Model()
     tank.show();
     gun.show();
 
-   // GameObject gun2(gun);
-   // GameObject gun2 = gun;
 
+    GameObject gun2;
+    gun2 = gun; //Todo Зробити операторо копії(присвоєння)
+
+    gun = gun; //Перший почистили. І нема чого копіювати...
 
 //    gameObjects.push_back(tank); //!!!! Нема конструктора глибокої копії
 //    gameObjects.push_back(gun);  //!!! Зробити наступного разу
