@@ -16,7 +16,7 @@ GameObject::GameObject()
     speedX = 0;
     speedY = 0;
     matr = NULL;
-    cout << "--c1--" << endl;
+   // cout << "--c1--" << endl;
 }
 
 GameObject::GameObject(double y, double x, double speed, double angleDeg, const char* fileName)
@@ -58,7 +58,8 @@ GameObject::GameObject(double y, double x, double speed, double angleDeg, const 
     this->y = y;
     speedX = speed * cos(degToRad(angleDeg));
     speedY = speed * sin(degToRad(angleDeg));
-    cout << "--c2--" << endl;
+    name = fileName;
+    //cout << "--c2--" << name << endl;
 }
 
 GameObject::GameObject(const GameObject& other)
@@ -83,7 +84,8 @@ GameObject::GameObject(const GameObject& other)
             matr[i][j] = other.matr[i][j];
         }
     }
-    cout << "--cc--" << endl;
+    name = other.name;
+    //cout << "--cc_go--" << name << endl;
 }
 
 GameObject& GameObject::operator=(const GameObject& other){
@@ -117,7 +119,8 @@ GameObject& GameObject::operator=(const GameObject& other){
             matr[i][j] = other.matr[i][j];
         }
     }
-    cout << "fun = " << endl;
+   // cout << "fun = " << endl;
+    name = other.name;
     return *this;
 }
 
@@ -142,6 +145,6 @@ GameObject::~GameObject()
             delete[] matr[i];
         }
         delete [] matr;
-        cout << "--d--" << endl;
+        //cout << "--d--" << name << endl;
     }
 }

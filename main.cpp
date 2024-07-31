@@ -7,12 +7,7 @@ using namespace std;
 int main()
 {
     try {
-        //Model model;
-        GameObject g(5, 4, 8, 33, "tank.img");
-        GameObject g1(g);
-
-        GameObject g2;
-        g2 = g;
+        Model model;
     }
     catch (const char* msg){
         cout << msg << endl;
